@@ -13,7 +13,19 @@ class Employee
   end
 
   def save
-       
+    sql = "INSERT INTO employees(name, hourly_rate, hours_wanted) VALUES ('#{@name}', #{@hourly_rate}, #{hours_wanted}) RETURNING * "
+    result = SqlRunner.run(sql).first 
+    @id = result['id'].to_i
+   
   end  
 
+  def delete
+    sql = "DELETE FROM employees WHERE id = #{@id}; "
+    result = SqlRunner.run(sql)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM employees;"
+    SqlRunner.run(sql)  
+  end
 end 
