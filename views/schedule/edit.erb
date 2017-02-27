@@ -1,0 +1,25 @@
+<form method="POST" action="/schedules/<%=@schedules.id%>">
+
+<label for= "name">Name:</label>
+<select name="employee_id">
+  <% for employee in @employees%>
+  <option value="<%=employee.id%>"><%=employee.name%></option>
+  <%end%>
+  </select>
+
+
+<label for="shift_id">Start Time</label>
+<select name="shift_id">
+  <% for shift in @shifts%>
+    <option value= "<%=shift.id%>"><%=shift.start_time%>
+    </option>
+  <%end%>
+    </select>
+
+  <label for = "shift_date">Date</label>
+  <input type="text" name="shift_date" id="shift_date"> 
+
+  <input type ="submit" value"update"/>
+
+</form>
+

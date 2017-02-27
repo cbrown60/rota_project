@@ -63,5 +63,12 @@ class Schedule
     return results.map {|result|Schedule.new(result) }
   end
 
+  def self.find(id)
+    sql="SELECT * FROM schedules WHERE id =#{id};"
+    schedule = SqlRunner.run(sql)
+    result = Schedule.new(schedule.first)
+    return result 
+  end
+
 
 end 

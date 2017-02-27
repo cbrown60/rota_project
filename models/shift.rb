@@ -11,7 +11,7 @@ class Shift
     @end_time = options['end_time']
 
   end
-
+ 
   def save
     sql = "INSERT INTO shifts (start_time, end_time) VALUES ('#{start_time}', '#{end_time}') RETURNING * "
     result = SqlRunner.run(sql).first 
@@ -33,6 +33,8 @@ class Shift
     results = SqlRunner.run(sql)
     return results.map {|shift| Shift.new(shift)}
   end
+
+  
     
 
 end

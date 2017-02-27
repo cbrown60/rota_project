@@ -1,20 +1,16 @@
 <h1>Employee Details</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th>Hours Wanted</th>
-    <th></th>
-    <th>Hourly Rate</th>
-  </tr>
+
+
   <% for employee in @employees %>
-  <tr>
-    <td><%= employee.name %></td>
-    <td>|</td>
-    <td><%= employee.hours_wanted%></td>
-    <td></td>
-    <td><%= employee.hourly_rate%></td>
-  </tr>
+  
+  <p>Name</p>
+  
+ 
+    <p><%= employee.name %></p>
+    <p>Hours Wanted</p>
+    <p><%= employee.hours_wanted%></p>
+ 
+    <p><a href="/employees/<%=employee.id%>">More Details</a></p>
   <% end %>
-</table>
+

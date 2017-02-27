@@ -6,3 +6,7 @@ require_relative("./controllers/schedule_controller.rb")
 
 
 
+get '/Home' do
+  erb(:home)
+end
+

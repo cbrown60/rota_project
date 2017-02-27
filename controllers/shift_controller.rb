@@ -8,3 +8,12 @@ get '/shifts' do
   erb(:"shift/index")
   end 
 
+get '/shifts/new' do 
+  erb(:"shift/new")
+end 
+
+post '/shifts' do 
+  @shift = Shift.new(params)
+  @shift.save
+  erb(:home)
+end 

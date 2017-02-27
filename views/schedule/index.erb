@@ -4,16 +4,29 @@
 <% for schedule in @schedules%>
 <!--   <%= schedule.shift.id %> -->
   <li>
-    <p>Staff Member</p>
-    <p><%=schedule.employee.name%></p>
-      <p>Shift Starts</p>
-      <p><%= schedule.shift.start_time %></p>
-      <P>Shift Ends</P>
-      <P><%=schedule.shift.end_time%></P>
       <p>Shift Date</p>
       <p><%= schedule.shift_date%></p>
+      </li>
+    <li>  <p>Staff Member</p>
+      <p><%=schedule.employee.name%></p>
+      </li>
+    <li>  <p>Shift Starts</p>
+      <p><%= schedule.shift.start_time %></p>
+      </li>
+    <li>  <P>Shift Ends</P>
+      <P><%=schedule.shift.end_time%></P>
+      </li>
+     
             
   </li>  
+
+ 
+  <p><a href="/schedules/<%=schedule.id%>/edit">Edit Rota</a></p>
+
+  <br>
+
   <%end%>
+
+
 </ul>
 

@@ -1,0 +1,17 @@
+<form method="post" action="/employees/<%=@employees.id%>">
+
+
+
+<label for ="name">Name:</label>
+<input type="text" id="name" name="name" value ="<%=@employees.name%>"/>
+
+<label for ="hours_wanted">Hours Wanted:</label>
+<input type="text" id="hours_wanted" name="hours_wanted" value ="<%=@employees.hours_wanted%>"/>
+
+<label for ="hourly_rate">Wage:</label>
+<input type="text" id="hourly_rate" name="hourly_rate" value ="<%=@employees.hourly_rate%>"/>
+
+<input type="submit" value="Update Employee">
+
+
+</form> 

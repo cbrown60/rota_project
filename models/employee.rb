@@ -35,6 +35,21 @@ class Employee
     return results.map {|employee| Employee.new(employee)}
     end
 
+    def self.find(id)
+      sql ="SELECT * FROM employees WHERE id=#{id};"
+      employee = SqlRunner.run(sql)
+      result = Employee.new(employee.first)
+      return result       
+    end
+
+    def update
+      sql ="UPDATE employees 
+            SET name = '#{name}',
+            hours_wanted = #{hours_wanted},
+            hourly_rate = #{hourly_rate}
+            WHERE id = '#{id}'"
+            SqlRunner.run(sql)
+    end
   
   
 end 
