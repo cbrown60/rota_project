@@ -1,0 +1,19 @@
+<h1>Shifts</h1>
+
+<table>
+  <tr>
+    <th>Start Time</th>
+    <th></th>
+    <th>End Time</th>
+  </tr>
+  <% for shift in @shifts%>
+  <tr>
+    <td><%= shift.start_time%></td>
+    <td></td>
+    <td><%= shift.end_time%></td>
+    <td></td>
+  </tr>
+  <%end%>
+
+
+</table>

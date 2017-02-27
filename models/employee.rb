@@ -28,4 +28,13 @@ class Employee
     sql = "DELETE FROM employees;"
     SqlRunner.run(sql)  
   end
+
+  def self.all()
+   sql ="SELECT * FROM employees"
+    results = SqlRunner.run(sql)
+    return results.map {|employee| Employee.new(employee)}
+    end
+
+  
+  
 end 

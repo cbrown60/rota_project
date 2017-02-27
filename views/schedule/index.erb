@@ -1,0 +1,19 @@
+<h1>This weeks Rotas</h1>
+<ul>
+
+<% for schedule in @schedules%>
+<!--   <%= schedule.shift.id %> -->
+  <li>
+    <p>Staff Member</p>
+    <p><%=schedule.employee.name%></p>
+      <p>Shift Starts</p>
+      <p><%= schedule.shift.start_time %></p>
+      <P>Shift Ends</P>
+      <P><%=schedule.shift.end_time%></P>
+      <p>Shift Date</p>
+      <p><%= schedule.shift_date%></p>
+            
+  </li>  
+  <%end%>
+</ul>
+

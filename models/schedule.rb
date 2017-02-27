@@ -2,7 +2,7 @@ require_relative ('../db/sql_runner')
 
 class Schedule
 
-  attr_accessor :date
+  attr_accessor :shift_date
   attr_reader :id, :employee_id, :shift_id
 
   def initialize(options)
@@ -29,5 +29,39 @@ class Schedule
     SqlRunner.run(sql)
   end
 
+
+  def shift 
+   sql ="SELECT * FROM shifts
+            INNER JOIN schedules ON schedules.shift_id = shifts.id 
+            WHERE shifts.id = #{@shift_id};"
+      shifts = SqlRunner.run(sql)
+     return Shift.new(shifts.first) 
+   end
   
+  def employee
+   sql ="SELECT * FROM employees
+            INNER JOIN schedules ON schedules.employee_id = employees.id 
+            WHERE employees.id = #{@employee_id};"
+      employees = SqlRunner.run(sql)
+     return Employee.new(employees.first) 
+
+  end
+
+  # def date
+
+  #   sql = "SELECT date FROM schedules
+  #        "
+  #     dates =SqlRunner.run(sql)
+  #     return Schedule.new(dates.first)
+
+  # end
+
+  def self.all()
+
+    sql = "SELECT * FROM schedules"
+    results = SqlRunner.run(sql)
+    return results.map {|result|Schedule.new(result) }
+  end
+
+
 end 

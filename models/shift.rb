@@ -27,5 +27,12 @@ class Shift
     sql = "DELETE FROM shifts WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
- 
+  
+  def self.all()
+    sql = "SELECT * FROM shifts"
+    results = SqlRunner.run(sql)
+    return results.map {|shift| Shift.new(shift)}
+  end
+    
+
 end
