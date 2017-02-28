@@ -35,7 +35,13 @@ require ('pry')
     employee.update
     redirect to ("employees/#{employee.id}")
   end
+
+  post "/employees/:id/delete" do 
+    Employee.delete(params[:id])
+    redirect to ("/employees")
+  end 
  
+
 
 
 

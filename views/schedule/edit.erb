@@ -11,13 +11,12 @@
 <label for="shift_id">Start Time</label>
 <select name="shift_id">
   <% for shift in @shifts%>
-    <option value= "<%=shift.id%>"><%=shift.start_time%>
+    <option <%="selected" if @shift_id == shift.id%> value = "<%=shift.id%>"><%=shift.start_time%>
     </option>
   <%end%>
     </select>
 
-  <label for = "shift_date">Date</label>
-  <input type="text" name="shift_date" id="shift_date"> 
+
 
   <input type ="submit" value"update"/>
 

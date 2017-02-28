@@ -1,7 +1,7 @@
 <h1>This weeks Rotas</h1>
 <ul>
 
-<% for schedule in @schedules%>
+<% for schedule in @schedules %>
 <!--   <%= schedule.shift.id %> -->
   <li>
       <p>Shift Date</p>
@@ -21,7 +21,12 @@
   </li>  
 
  
-  <p><a href="/schedules/<%=schedule.id%>/employee/<%= schedule.employee_id %>/edit">Edit Rota</a></p>
+  <p><a href="/schedules/<%=schedule.id%>/employee/<%= schedule.employee_id %>/shift/<%=schedule.shift_id%>/edit">Edit Rota</a></p>
+
+  <form action="/schedules/<%=schedule.id%>/delete" method="post"/>
+  <input type="submit" value="delete"/>
+  </form>
+
 
   <br>
 
@@ -29,4 +34,6 @@
 
 
 </ul>
+
+
 

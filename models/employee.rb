@@ -19,9 +19,10 @@ class Employee
    
   end  
 
-  def delete
-    sql = "DELETE FROM employees WHERE id = #{@id}; "
-    result = SqlRunner.run(sql)
+  def self.delete(id)
+    sql = "DELETE FROM employees WHERE id = #{id};"
+
+   SqlRunner.run(sql)
   end
 
   def self.delete_all

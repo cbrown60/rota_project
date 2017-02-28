@@ -2,8 +2,8 @@ require_relative ('../db/sql_runner')
 
 class Schedule
 
-  attr_accessor :shift_date
-  attr_reader :id, :employee_id, :shift_id
+  attr_accessor :shift_date, :employee_id, :shift_id
+  attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i
@@ -19,9 +19,9 @@ class Schedule
     @id = result['id'].to_i 
   end
 
-  def delete 
-    sql = "DELETE FROM shedules WHERE id = #{@id}"  
-    SqlRunner.sql(sql)
+  def self.delete(id)
+    sql = "DELETE FROM schedules WHERE id = #{id}"  
+    SqlRunner.run(sql)
   end 
 
   def self.delete_all
@@ -69,6 +69,15 @@ class Schedule
     result = Schedule.new(schedule.first)
     return result 
   end
+
+  def update
+    sql ="UPDATE schedules 
+          SET employee_id = #{@employee_id},
+          shift_id = #{@shift_id}
+          WHERE id = #{@id}"
+          SqlRunner.run(sql)
+  end
+  
 
 
 end 

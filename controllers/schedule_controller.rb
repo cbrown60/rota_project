@@ -5,6 +5,7 @@ require ('pry')
 
 get '/schedules' do 
   @schedules = Schedule.all
+  puts @schedules
   erb(:"schedule/index")
 end
 
@@ -20,10 +21,11 @@ post "/schedules" do
   erb(:"schedule/create")
 end
 
-get "/schedules/:id/employee/:employee_id/edit" do 
+get "/schedules/:id/employee/:employee_id/shift/:shift_id/edit" do 
 @schedules = Schedule.find(params[:id])
 @employees = Employee.all
 @shifts = Shift.all
+@shift_id = params[:shift_id].to_i
 @employee_id = params[:employee_id].to_i
 erb(:"schedule/edit")
 end 
@@ -32,11 +34,18 @@ end
 
 #@shift_id = [params]
 
-get "/schedules/:id" do
-  schedule = Schedule.new(params)
+post "/schedules/:id" do
+  schedule = Schedule.find(params[:id])
+  schedule.employee_id = params[:employee_id]
+  schedule.shift_id = params[:shift_id]
   schedule.update
-  erb(:"schedule/index")
+  redirect to("/schedules")
 end
+
+post '/schedules/:id/delete' do 
+  Schedule.delete(params[:id])
+    redirect to ("/schedules")
+  end 
 
 
 
