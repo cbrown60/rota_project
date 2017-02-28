@@ -3,7 +3,7 @@
 <label for= "name">Name:</label>
 <select name="employee_id">
   <% for employee in @employees%>
-  <option value="<%=employee.id%>"><%=employee.name%></option>
+  <option <%= "selected" if @employee_id == employee.id %> value="<%=employee.id%>"><%=employee.name%></option>
   <%end%>
   </select>
 
