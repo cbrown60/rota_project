@@ -2,6 +2,20 @@
 <p>Name: <%=@employee.name%></p>
 <p>Hours: Available <%=@employee.hours_wanted%></p>
 <P>Wage Rate:<%=@employee.hourly_rate%> </P>
+<p>Shifts:
+<p>Shift Date</p>
+<%@employee.my_schedule.each do |schedule|%>
+<p> <%=schedule.shift_date%> </p> 
+<p>Start Time</p>
+<p><%=schedule.shift.start_time%></p>
+<p>Finish Time</p>
+<p><%=schedule.shift.end_time%></p>
+<%end%>
+<p><%= @employee.hours_worked %></p>
+
+
+</p>
+
 
 <p><a href="/employees/<%=@employee.id%>/edit"/>Edit Employee</p>
 

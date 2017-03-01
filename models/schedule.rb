@@ -31,7 +31,7 @@ class Schedule
 
 
   def shift 
-   sql ="SELECT * FROM shifts
+   sql ="SELECT shifts.id, shifts.start_time, shifts.end_time FROM shifts
             INNER JOIN schedules ON schedules.shift_id = shifts.id 
             WHERE shifts.id = #{@shift_id};"
       shifts = SqlRunner.run(sql)
@@ -78,6 +78,12 @@ class Schedule
           SqlRunner.run(sql)
   end
   
+  def sort
+    psql = "SELECT * FROM schedules
+            ORDER BY shift_date DESC"
+            SqlRunner.run(psql)
+      
+  end
 
 
 end 

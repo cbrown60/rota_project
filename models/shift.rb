@@ -35,6 +35,14 @@ class Shift
   end
 
   
-    
+  
+  def hours_worked 
+    sql = "SELECT EXTRACT(EPOCH FROM(end_time - start_time)) FROM shifts WHERE id = #{@id}"
+    result = SqlRunner.run(sql) 
+    seconds = result.first["date_part"]
+    return seconds.to_f / 60 / 60
+
+  end
+
 
 end
